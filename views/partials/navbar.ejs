@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMpXmXQXtWqYqHhk1+W/5z+H/eu1P2GdoAwOwF0/iUUb00Qx3DR3cE6guq0Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar:hover {
+            background-color: #495057;
+            /* Darker on hover */
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffdd57;
+            /* Golden color on hover */
+        }
+
+        .nav-item {
+            margin-left: 15px;
+        }
+
+        .btn-login {
+            background-color: #ffdd57;
+            /* Golden color for buttons */
+            color: #343a40;
+            border-radius: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #ffc107;
+            /* Lighter golden color */
+            color: #ffffff;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5);
+            /* White border for toggler */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+            /* Custom color for toggler icon */
+        }
+
+        .logout-icon {
+            margin-right: 5px;
+            /* Spacing between icon and text */
+        }
+    </style>
+    <title>Vagabond Navbar</title>
+</head>
+
+<body>
+
+    <nav class="navbar sticky-top navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Heritopia</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/campgrounds">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/campgrounds/new">Add your fav</a>
+                    </li>
+                </ul>
+
+                <!-- Add ms-auto to push login/register to the right -->
+                <ul class="navbar-nav ms-auto">
+                    <% if(!currentUser) { %>
+                        <li class="nav-item">
+                            <a class="btn btn-login" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-login" href="/register">Register</a>
+                        </li>
+                        <% } else { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">
+                                    <i class="fas fa-sign-out-alt logout-icon"></i>Logout
+                                </a>
+                            </li>
+                            <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

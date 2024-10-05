@@ -1,0 +1,181 @@
+<% layout('layout/boilerplate') %>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                background: linear-gradient(135deg, #53b8e3, #75ea6b);
+                /* Matching gradient */
+                color: #343a40;
+                overflow: hidden;
+                /* Prevent scrolling during animation */
+            }
+
+            .container {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 30px;
+                animation: fadeIn 0.5s ease-in-out;
+                /* Add a fade-in effect */
+            }
+
+            h1 {
+                font-weight: 600;
+                margin-bottom: 30px;
+                text-align: center;
+                color: #43ec54;
+                /* Matching color for consistency */
+            }
+
+            .card {
+                border: none;
+                border-radius: 20px;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+                background-color: #fff;
+                position: relative;
+                overflow: hidden;
+                padding: 2rem;
+                /* Added padding for better spacing */
+            }
+
+            .circle-design {
+                position: absolute;
+                border-radius: 50%;
+                opacity: 0.3;
+                z-index: 0;
+                /* Positioned behind the content */
+            }
+
+            .circle1 {
+                top: -80px;
+                right: -80px;
+                width: 250px;
+                height: 250px;
+                background: linear-gradient(135deg, #e208db, #71afed);
+                /* Matching color scheme */
+            }
+
+            .circle2 {
+                bottom: -80px;
+                left: -80px;
+                width: 250px;
+                height: 250px;
+                background: linear-gradient(135deg, #536cea, #6ccef2);
+                /* Matching color scheme */
+            }
+
+            .form-label {
+                font-weight: 500;
+                color: #555;
+            }
+
+            .form-control {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 12px;
+                font-size: 1.1em;
+                transition: all 0.3s ease;
+                position: relative;
+                /* Maintain position for input */
+                z-index: 1;
+                /* Position in front of the circles */
+            }
+
+            .form-control:focus {
+                outline: none;
+                border-color: #ff6f91;
+                box-shadow: 0 0 12px rgba(255, 111, 145, 0.4);
+            }
+
+            .btn-success {
+                background-color: #48dbfb;
+                /* Changed button color to vibrant cyan */
+                border: none;
+                border-radius: 25px;
+                padding: 15px;
+                font-weight: 600;
+                transition: background-color 0.3s, transform 0.2s;
+                font-size: 1.2em;
+                width: 100%;
+                color: white;
+                position: relative;
+                /* Keep button in front of circles */
+                z-index: 1;
+                /* Ensure button is above circles */
+            }
+
+            .btn-success:hover {
+                background-color: #1ce26b;
+                /* Darker shade on hover */
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px rgba(72, 219, 251, 0.4);
+                /* Match the button color */
+            }
+
+            .img-fluid {
+                border-radius: 20px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s;
+                z-index: 1;
+                /* Ensure the image is above the circles */
+                position: relative;
+                /* Maintain position for image */
+            }
+
+            .img-fluid:hover {
+                transform: scale(1.05);
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+        </style>
+        <title>Login</title>
+    </head>
+
+    <body>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="circle-design circle1"></div>
+                <div class="circle-design circle2"></div>
+                <div class="row">
+                    <!-- Login Form -->
+                    <div class="col-md-6">
+                        <h1>Login</h1>
+                        <form action="/login" method="POST" class="validated-form" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="username">Username</label>
+                                <input class="form-control" type="text" id="username" name="username" required>
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input class="form-control" type="password" id="password" name="password" required>
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success">Login</button>
+                        </form>
+                    </div>
+
+                    <!-- Image Section -->
+                    <div class="col-md-6 d-flex justify-content-center align-items-center">
+                        <img src="https://imgmedia.lbb.in/media/2022/06/62aca33aef1685154c5b91e1_1655481146264.jpg" alt="Login Image" class="img-fluid"
+                            style="max-height: 50vh; width: 80%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>

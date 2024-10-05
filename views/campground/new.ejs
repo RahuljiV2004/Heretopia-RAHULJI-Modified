@@ -1,0 +1,77 @@
+<% layout('layout/boilerplate') %>
+<div class="row">
+    <h1 class="text-center">Contribute Your Discoveries!</h1>
+    <h2 class="text-center body-secondary">Together, we can highlight the whispers of history!</h2>
+    <div class="col-6 offset-3">
+        <form action="/campgrounds" method="POST" enctype="multipart/form-data" class="validated-form" novalidate>
+            <div class="mt-2 mb-3">
+                <label class="form-label" for="title">Historic place name</label>
+                <input class="form-control" type="text" id="title" name="campground[title]" required>
+                <div class="invalid-feedback">Please provide a valid title.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="campground[location]" required>
+                <div class="invalid-feedback">Please provide a valid location.</div>
+            </div>
+            <label class="form-label" for="price">Entry Fee</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="price-label">₹</span>
+                <input type="text" class="form-control" placeholder="0.00" aria-describedby="price-label"
+                    name="campground[price]" required>
+                <div class="invalid-feedback">Please provide a valid price.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Upload Images</label>
+                <input type="file" id="image" name="images" multiple required class="file-input">
+                <label for="image" class="file-label">Choose files...</label>
+                <div id="file-info" class="mt-2 text-muted">No files selected</div>
+                <div class="invalid-feedback">Please upload at least one image.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" name="campground[description]" id="description" required></textarea>
+                <div class="invalid-feedback">Please provide a description.</div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-info">Add this place to our db</button>
+            </div>
+        </form>
+        <div>
+            <a href="/campgrounds">All Tourist spots</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .file-input {
+        display: none;
+        /* Hide the original file input */
+    }
+
+    .file-label {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .file-label:hover {
+        background-color: #0056b3;
+    }
+
+    .file-label:active {
+        background-color: #004085;
+    }
+</style>
+
+<script>
+    // Show selected file names in the upload box
+    document.getElementById('image').addEventListener('change', function () {
+        const fileInfo = document.getElementById('file-info'); // Ensure this ID matches the new div
+        const files = Array.from(this.files);
+        fileInfo.textContent = files.length > 0 ? files.map(file => file.name).join(', ') : 'No files selected';
+    });
+</script>
