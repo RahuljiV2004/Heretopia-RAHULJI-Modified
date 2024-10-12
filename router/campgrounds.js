@@ -16,7 +16,7 @@ const Review = require('../models/review'); // Ensure this path is correct
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
-
+const axios = require('axios');
 // Validation middleware
 
 
@@ -107,15 +107,30 @@ router.get('/:id', isValidObjectId, catchAsync(async (req, res) => {
         }
     }).populate('author');
 
-    // console.log(camp);
-
     if (!camp) {
-        req.flash('error', 'Cannot find that campground!');
+        req.flash('error', 'Cannot find that Historic spot!');
         return res.redirect('/campgrounds');
     }
 
-    res.render('campground/show', { camp });
+    const openWeatherApiKey = process.env.OPENWEATHER_API_KEY;
+    const lat = camp.geometry.coordinates[1];
+    const lng = camp.geometry.coordinates[0];
+
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=bd3a638e4daef70437fc5bf94e7d412f&units=metric`;
+
+    let weatherData;
+    try {
+        const response = await axios.get(weatherUrl);
+        weatherData = response.data;
+    } catch (error) {
+        console.error("Error fetching weather data:", error);
+        weatherData = null;
+    }
+
+    // Pass both `camp` and `weatherData` to the template
+    res.render('campground/show', { camp, weatherData });
 }));
+
 
 
 
