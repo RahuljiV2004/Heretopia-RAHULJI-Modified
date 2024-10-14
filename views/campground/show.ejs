@@ -527,7 +527,7 @@
             });
             map.addControl(new mapboxgl.NavigationControl());
 
-            new mapboxgl.Marker()
+            new mapboxgl.Marker({ color: 'red' })
                 .setLngLat(campground.geometry.coordinates)
                 .setPopup(
                     new mapboxgl.Popup({ offset: 25 })
